@@ -28,7 +28,8 @@ public class Organizer{
 			}
 		}
 		return orgData;
-		
+		//Modify Original Data to this Format of a 2D ArrayList
+		// Name, Choice 1, Choice 2, Choice 3, Choice 4, Choice 5
 		
 	}
 
