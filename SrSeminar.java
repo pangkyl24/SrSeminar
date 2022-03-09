@@ -54,6 +54,10 @@ public class SrSeminar{
 		ArrayList<ArrayList<String>> newData = test.organizeData(data);
 		System.out.println(newData);
 		
+		int largest = test.searchTopNum(pop);
+		System.out.println("Most Popular Event: " + largest);
+		
+		
 		
 		
 	}
