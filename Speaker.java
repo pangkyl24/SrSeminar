@@ -1,11 +1,29 @@
 public class Speaker{
 	
 	private String name;
-	private int presCount; //Number of times the presenter has presented
+	private ArrayList<String> semsName = new ArrayList<String>();
+	private ArrayList<Integer> semsNum = new ArrayList<Integer>();
 
 	public Speaker(String name){
 		this.name = name;
-		presCount = 0;
+	}
+	
+	public void addSeminar(String semName, int semNum){
+		
+		this.semsName.add(semName);
+		this.semNum.add(semNum);
+		
+	}
+	
+	public ArrayList<String> getSemsName(){
+		return semsName;
+	}
+	public ArrayList<Integer> getSemsNum(){
+		return sumsNum;
+	}
+	
+	public String toString(){
+		return name + ": " + semsNum;
 	}
 
 }
