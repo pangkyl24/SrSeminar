@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 
 public class Organizer{
 
@@ -87,4 +87,30 @@ public class Organizer{
 		
 	}
 
+}*/
+
+import java.util.ArrayList;
+
+public class Organizer{
+	
+	ArrayList<Person> peopleList = new ArrayList<Person>();
+	
+	public Organizer(ArrayList<String[]> data){
+		
+		for(int i = 1; i < 70; i++){
+			
+			peopleList.add(new Person(data.get(i)[2] + " " + data.get(i)[3], 
+									  Integer.parseInt(data.get(i)[10]),
+									  Integer.parseInt(data.get(i)[11]),
+									  Integer.parseInt(data.get(i)[12]),
+									  Integer.parseInt(data.get(i)[13]),
+									  Integer.parseInt(data.get(i)[14])));
+			
+		}
+		
+		System.out.println(peopleList);
+		
+	}
+	
 }
+
