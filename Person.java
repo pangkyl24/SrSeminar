@@ -3,39 +3,40 @@ import java.util.ArrayList;
 public class Person{
 	
 	private String name;
-	private ArrayList<int> prefsI;
-	private ArrayList<String> prefsS;
-	private ArrayList<int> events;
+	private ArrayList<Integer> prefs = new ArrayList<Integer>();
+	private ArrayList<Integer> events = new ArrayList<Integer>();
 	
 	public Person(String name){
 		this.name = name;
 	}
-	public ArrayList<int> getPrefsI(){
-		return prefsI;
+	
+	public Person(String name, int p1, int p2, int p3, int p4, int p5){
+		this.name = name;
+		prefs.add(p1);
+		prefs.add(p2);
+		prefs.add(p3);
+		prefs.add(p4);
+		prefs.add(p5);
+		
 	}
-	public ArrayList<String> getPrefsS(){
-		return prefsS;
+	
+	
+	public ArrayList<Integer> getPrefs(){
+		return prefs;
 	}
-	public ArrayList<int> getEvents(){
-		returnEvents;
+	public ArrayList<Integer> getEvents(){
+		return events;
 	}
 	
 	public void addEvent(int event){
 		events.add(event);
 	}
 	public void addPrefsI(int event){
-		prefsI.add(event);
-	}
-	public void addPrefsS(String event){
-		prefsS.add(event);
+		prefs.add(event);
 	}
 	
 	public String toString(){
-		String ret = name + ": ";
-		for(int i = 0; i < prefsI.size(); i++){
-			ret = ret + prefsI.get(i) + " ";
-		}
-		return ret;
+		return name + ": " + prefs;
 		
 	}
 	
