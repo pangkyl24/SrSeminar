@@ -48,7 +48,7 @@ public class Organizer{
 		
 		
 	}*/
-	public int[] countPopularity(){
+	/*public int[] countPopularity(){
 		int[] popularityCount = new int[19];
 		for(int i = 0; i < data.size(); i++){
 			for(int j = 1; j < 6; j++){
@@ -58,7 +58,7 @@ public class Organizer{
 		}
 		return popularityCount;
 		
-	}
+	}*/
 	
 	/*public ArrayList<ArrayList<String>> organizeData(ArrayList<String[]> data){
 		
@@ -74,7 +74,7 @@ public class Organizer{
 		
 	}*/
 	
-	public int searchTopNum(int[] list){
+	/*public int searchTopNum(int[] list){
 		
 		int largest = 1;
 		for(int i = 2; i < list.length; i++){
@@ -85,7 +85,7 @@ public class Organizer{
 		return largest;
 		
 		
-	}
+	}*/
 
 }*/
 
