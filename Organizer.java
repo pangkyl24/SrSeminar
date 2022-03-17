@@ -48,6 +48,75 @@ public class Organizer{
 		
 	}
 	
+	//public int SpeakerOfSem(int num){
+	//}
+	public void setTimeSlot(){
+		
+		if (semTable.get(semTable.size()-1).size() == 6){
+			semTable.add(new ArrayList<Integer>());
+		}
+		for(int i = 0; i < semTable.get(semTable.size()-1).size(); i++){
+			firstPrio[semTable.get(semTable.size()-1).get(i)] = 0;
+			prio[semTable.get(semTable.size()-1).get(i)] = 0;
+		}
+		
+		while (true){ //Find largest in firstPrio + >15 in prio
+			
+			int max = 0;
+			for(int i = 0; i < 19; i++){
+				if (firstPrio[i] > firstPrio[max]){
+					max = i;
+				}
+				else if (firstPrio[i] == firstPrio[max] && prio[i] > prio[max]){
+					max = i;
+				}
+			}
+			if (prio[max] >= 15){
+				semTable.get(semTable.size()-1).add(max);
+				break;
+			}
+			else if (firstPrio[max] == 0){
+				int priomax = 0
+				for(int i = 0; i < 19; i++){
+					if (prio[i] > prio[priomax]){
+						priomax = i;
+					}
+					else if (prio[i] == prio[priomax] && firstPrio[i] > firstPrio[priomax]){
+						priomax = i;
+					}
+				}
+				semTable.get(semTable.size()-1).add(max);
+				break;
+			}
+			else{
+				firstPrio[max] = 0;
+			}
+			
+			
+			
+		}
+	}
+	
+	public void fillPeople(){
+		
+		int eventNum = semTable.get(semTable.size()-1).get(semTable.size()-1);
+		int counter = 0; //if ==15 break loop
+		for(int i = 0; i < peopleList.size(); i++){
+			for(int j = 0; j < peopleList.get(i).getPrefs().size()){
+				if(peopleList.get(i).getPrefs().get(j) == eventNum){
+					peopleList.get(i).addEvent(eventNum);
+					peopleList.get(i).removeEvent(eventNum);
+					if(counter == 15){
+						break;
+					}
+					}
+				}
+			}
+			
+		}
+		
+	}
+	
 	
 	
 }
