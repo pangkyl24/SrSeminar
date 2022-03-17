@@ -34,6 +34,9 @@ public class Person{
 	public void addPrefsI(int event){
 		prefs.add(event);
 	}
+	public void removeEvent(int event){
+		prefs.remove(event);
+	}
 	
 	public String toString(){
 		return name + ": " + prefs;
