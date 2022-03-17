@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Speaker{
 	
 	private String name;
@@ -11,7 +13,7 @@ public class Speaker{
 	public void addSeminar(String semName, int semNum){
 		
 		this.semsName.add(semName);
-		this.semNum.add(semNum);
+		this.semsNum.add(semNum);
 		
 	}
 	
@@ -19,7 +21,7 @@ public class Speaker{
 		return semsName;
 	}
 	public ArrayList<Integer> getSemsNum(){
-		return sumsNum;
+		return semsNum;
 	}
 	
 	public String toString(){
