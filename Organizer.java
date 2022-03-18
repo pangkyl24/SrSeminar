@@ -117,10 +117,10 @@ public class Organizer{
 	
 	public void fillPeople(){
 		
-		int eventNum = semTable.get(semTable.size()-1).get(semTable.size()-1);
+		int eventNum = semTable.get(semTable.size()-1).get(semTable.get(semTable.size()-1).size()-1);
 		int counter = 0; //if ==15 break loop
 		
-		for(int i = 0; i < peopleList.size(); i++){
+		/*for(int i = 0; i < peopleList.size(); i++){
 			
 			for(int j = 0; j < peopleList.get(i).getPrefs().size(); j++){
 				
@@ -136,6 +136,40 @@ public class Organizer{
 					
 				}
 			}
+		}*/
+		for(int i = 0; i < peopleList.size(); i++){
+			
+			if(peopleList.get(i).getPrefs().get(0) == eventNum){
+				peopleList.get(i).addEvent(eventNum);
+				peopleList.get(i).removeEvent(eventNum);
+				peopleList.add(peopleList.get(i));
+				peopleList.remove(i);
+				counter++;
+				if(counter == 15){
+					break;
+				}
+			}
+			
+		}
+		for(int i = 0; i < peopleList.size(); i++){
+			
+			for(int j = 0; j < peopleList.get(i).getPrefs().size(); j++){
+				
+				if(peopleList.get(i).getPrefs().get(j) == eventNum){
+					
+					peopleList.get(i).addEvent(eventNum);
+					peopleList.get(i).removeEvent(eventNum);
+					peopleList.add(peopleList.get(i));
+					peopleList.remove(i);
+					counter++;
+					if(counter == 15){
+						break;
+					}
+					
+				}
+				
+			}
+			
 		}
 			
 	}
