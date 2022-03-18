@@ -46,6 +46,7 @@ public class Main{
 		}*/
 		Organizer org = new Organizer(data);
 		org.setPrio();
+		org.setTimeSlot();
 		
 		
 		
