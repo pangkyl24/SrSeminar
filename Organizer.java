@@ -46,13 +46,28 @@ public class Organizer{
 			
 		}
 		
+		//Test Method
+		System.out.println();
+		System.out.print("Prio: ");
+		for(int i = 0; i < 19; i++){
+			System.out.print(prio[i] + " ");
+		}
+		System.out.println();
+		System.out.print("firstPrio: ");
+		for(int i = 0; i < 19; i++){
+			System.out.print(firstPrio[i] + " ");
+		}
+		System.out.println();
 	}
 	
 	//public int SpeakerOfSem(int num){
 	//}
 	public void setTimeSlot(){
 		
-		if (semTable.get(semTable.size()-1).size() == 6){
+		if(semTable.size() == 0){
+			semTable.add(new ArrayList<Integer>());
+		}
+		else if (semTable.get(semTable.size()-1).size() == 6){
 			semTable.add(new ArrayList<Integer>());
 		}
 		for(int i = 0; i < semTable.get(semTable.size()-1).size(); i++){
@@ -76,7 +91,7 @@ public class Organizer{
 				break;
 			}
 			else if (firstPrio[max] == 0){
-				int priomax = 0
+				int priomax = 0;
 				for(int i = 0; i < 19; i++){
 					if (prio[i] > prio[priomax]){
 						priomax = i;
@@ -95,28 +110,34 @@ public class Organizer{
 			
 			
 		}
+		
+		//Test Method
+		System.out.println(semTable);
 	}
 	
 	public void fillPeople(){
 		
 		int eventNum = semTable.get(semTable.size()-1).get(semTable.size()-1);
 		int counter = 0; //if ==15 break loop
+		
 		for(int i = 0; i < peopleList.size(); i++){
-			for(int j = 0; j < peopleList.get(i).getPrefs().size()){
+			
+			for(int j = 0; j < peopleList.get(i).getPrefs().size(); j++){
+				
 				if(peopleList.get(i).getPrefs().get(j) == eventNum){
+					
 					peopleList.get(i).addEvent(eventNum);
 					peopleList.get(i).removeEvent(eventNum);
+					peopleList.add(peopleList.get(i));
+					peopleList.remove(i);
 					if(counter == 15){
 						break;
 					}
-					}
+					
 				}
 			}
-			
 		}
-		
+			
 	}
-	
-	
-	
+		
 }
