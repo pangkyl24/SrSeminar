@@ -18,10 +18,10 @@ public class Main{
 		String splitBy = ",";
 		try {
 			
-			BufferedReader br = new BufferedReader(new FileReader("SrSeminar_RawData.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("SrSeminar_RawData.csv")); //Access the file
 			while((line = br.readLine()) != null){
 				
-				data.add(line.split(splitBy));
+				data.add(line.split(splitBy)); //import the file into an ArrayList of an Array of Strings named Data
 				
 			}
 			
@@ -49,8 +49,8 @@ public class Main{
 		//org.setTimeSlot();
 		
 		//Sorting Sr Seminar
-		Organizer org = new Organizer(data);
-		for(int i = 0; i < 30; i++){
+		Organizer org = new Organizer(data); //uploads data into the Organizer
+		for(int i = 0; i < 30; i++){ //Organizing
 			org.setPrio();
 			org.setTimeSlot();
 			org.fillPeople();
