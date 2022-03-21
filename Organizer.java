@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Organizer{
 	
+	//Var Setup
 	ArrayList<Person> peopleList = new ArrayList<Person>();
 	int[] prio = new int[19];
 	int[] firstPrio = new int[19];
@@ -13,6 +14,7 @@ public class Organizer{
 		//Get People  +  Preferences
 		for(int i = 1; i < 70; i++){
 			
+			//Add each person in CSV as a Person Class
 			peopleList.add(new Person(data.get(i)[2] + " " + data.get(i)[3], 
 									  Integer.parseInt(data.get(i)[10]),
 									  Integer.parseInt(data.get(i)[11]),
@@ -32,7 +34,7 @@ public class Organizer{
 		
 	}
 	
-	public void setPrio(){
+	public void setPrio(){ //Determines the Popularity of every Seminar
 		
 		prio = new int[19];
 		firstPrio = new int[19];
@@ -47,17 +49,17 @@ public class Organizer{
 		}
 		
 		//Test Method
-		System.out.println();
-		System.out.print("Prio: ");
-		for(int i = 0; i < 19; i++){
-			System.out.print(prio[i] + " ");
-		}
-		System.out.println();
-		System.out.print("firstPrio: ");
-		for(int i = 0; i < 19; i++){
-			System.out.print(firstPrio[i] + " ");
-		}
-		System.out.println();
+		//System.out.println();
+		//System.out.print("Prio: ");
+		//for(int i = 0; i < 19; i++){
+		//	System.out.print(prio[i] + " ");
+		//}
+		//System.out.println();
+		//System.out.print("firstPrio: ");
+		//for(int i = 0; i < 19; i++){
+		//	System.out.print(firstPrio[i] + " ");
+		//}
+		//System.out.println();
 	}
 	
 	//public int SpeakerOfSem(int num){
@@ -112,7 +114,7 @@ public class Organizer{
 		}
 		
 		//Test Method
-		System.out.println(semTable);
+		//System.out.println(semTable);
 	}
 	
 	public void fillPeople(){
