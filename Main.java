@@ -18,7 +18,7 @@ public class Main{
 		String splitBy = ",";
 		try {
 			
-			BufferedReader br = new BufferedReader(new FileReader("C:/Users/pangkyl24/Desktop/SrSem2/SrSeminar_RawData.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("SrSeminar_RawData.csv"));
 			while((line = br.readLine()) != null){
 				
 				data.add(line.split(splitBy));
@@ -29,7 +29,7 @@ public class Main{
 		catch(IOException e){
 			e.printStackTrace();
 		}
-		//^Import everything into ArrayList<String[]> data
+		//^Import everything into ArrayList<String[]> datas
 		
 		/*for(int i = 1; i < 70; i++){
 			
@@ -44,10 +44,17 @@ public class Main{
 			
 			
 		}*/
-		Organizer org = new Organizer(data);
-		org.setPrio();
-		org.setTimeSlot();
+		//Organizer org = new Organizer(data);
+		//org.setPrio();
+		//org.setTimeSlot();
 		
+		//Sorting Sr Seminar
+		Organizer org = new Organizer(data);
+		for(int i = 0; i < 30; i++){
+			org.setPrio();
+			org.setTimeSlot();
+			org.fillPeople();
+		}
 		
 		
 		
