@@ -39,7 +39,7 @@ public class Organizer{
 		prio = new int[19];
 		firstPrio = new int[19];
 		
-		for( Person person : peopleList ){
+		for( Person person : peopleList ){ //Looping over PeopleList
 			
 			for(int i = 0; i < person.getPrefs().size(); i++){
 				prio[person.getPrefs().get(i)] ++;
@@ -76,6 +76,7 @@ public class Organizer{
 			firstPrio[semTable.get(semTable.size()-1).get(i)] = 0;
 			prio[semTable.get(semTable.size()-1).get(i)] = 0;
 		}
+		//Creates the "next" timeslot and removes any possibility for any lectures be put in the timeslot that shouldnt be there
 		
 		while (true){ //Find largest in firstPrio + >15 in prio
 			
@@ -86,13 +87,14 @@ public class Organizer{
 				}
 				else if (firstPrio[i] == firstPrio[max] && prio[i] > prio[max]){
 					max = i;
-				}
+				} //Max is set through firstPrio, and if they are equal, the one with the highest general popularity is set as the new max
 			}
-			if (prio[max] >= 15){
+			if (prio[max] >= 15){ //If the general popularity of the chosen event is > 15, then that event is set.
 				semTable.get(semTable.size()-1).add(max);
 				break;
 			}
-			else if (firstPrio[max] == 0){
+			/*
+			else if (firstPrio[max] == 0){ //if first pick priority of the set Max value is 0
 				int priomax = 0;
 				for(int i = 0; i < 19; i++){
 					if (prio[i] > prio[priomax]){
@@ -100,13 +102,27 @@ public class Organizer{
 					}
 					else if (prio[i] == prio[priomax] && firstPrio[i] > firstPrio[priomax]){
 						priomax = i;
-					}
+					} //priomax is set to the value with the highest overall popularity
 				}
 				semTable.get(semTable.size()-1).add(max);
 				break;
 			}
 			else{
 				firstPrio[max] = 0;
+			}*/
+			else{ //if general popularity isnt > 15, the pick goes to the next largest
+				int priomax = 0;
+				for(int i = 0; i < 19; i++){
+					if(prio[i] > prio[priomax]){
+						priomax = i;
+					}
+					else if(prio[i] == prio[priomax] && firstPrio[i] > firstPrio[priomax]){
+						priomax = i;
+					}
+				}
+				semTable.get(semTable.size()-1).add(priomax);
+				
+				
 			}
 			
 			
@@ -119,6 +135,7 @@ public class Organizer{
 	
 	public void fillPeople(){
 		
+		//local vars
 		int eventNum = semTable.get(semTable.size()-1).get(semTable.get(semTable.size()-1).size()-1);
 		int counter = 0; //if ==15 break loop
 		
@@ -141,6 +158,7 @@ public class Organizer{
 		}*/
 		for(int i = 0; i < peopleList.size(); i++){
 			
+			//Goes through the People in PeopleList to see whose first choice is the same as eventNum, then moves them to the back of the list
 			if(peopleList.get(i).getPrefs().get(0) == eventNum){
 				peopleList.get(i).addEvent(eventNum);
 				peopleList.get(i).removeEvent(eventNum);
@@ -157,6 +175,7 @@ public class Organizer{
 			
 			for(int j = 0; j < peopleList.get(i).getPrefs().size(); j++){
 				
+				//Goes though the People in PeopleList too see who has a choice that is the same as eventNum, then moves them to the back of the list
 				if(peopleList.get(i).getPrefs().get(j) == eventNum){
 					
 					peopleList.get(i).addEvent(eventNum);
@@ -173,6 +192,8 @@ public class Organizer{
 			}
 			
 		}
+		
+		
 			
 	}
 		
