@@ -2,14 +2,17 @@ import java.util.ArrayList;
 
 public class Person{
 	
+	//var setup
 	private String name;
 	private ArrayList<Integer> prefs = new ArrayList<Integer>();
 	private ArrayList<Integer> events = new ArrayList<Integer>();
 	
+	//CONSTRUCTOR - Pretty Much not even used
 	public Person(String name){
 		this.name = name;
 	}
 	
+	//OVERLOADED CONTRUCTOR
 	public Person(String name, int p1, int p2, int p3, int p4, int p5){
 		this.name = name;
 		prefs.add(p1);
@@ -20,7 +23,7 @@ public class Person{
 		
 	}
 	
-	
+	//Returning Vars
 	public ArrayList<Integer> getPrefs(){
 		return prefs;
 	}
