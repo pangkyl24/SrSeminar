@@ -42,10 +42,17 @@ public class Organizer{
 		for( Person person : peopleList ){ //Looping over PeopleList
 			
 			for(int i = 0; i < person.getPrefs().size(); i++){
+				if(person.getPrefs().size() > 0){
+					prio[person.getPrefs().get(i)] ++;
+				}
 				prio[person.getPrefs().get(i)] ++;
 			}
-			firstPrio[person.getPrefs().get(0)] ++;
+			if(person.getPrefs().size() > 0){
+				
+				firstPrio[person.getPrefs().get(0)] ++;
 			
+			}
+						
 		}
 		
 		//Test Method
@@ -76,6 +83,7 @@ public class Organizer{
 			firstPrio[semTable.get(semTable.size()-1).get(i)] = 0;
 			prio[semTable.get(semTable.size()-1).get(i)] = 0;
 		}
+		//System.out.println("Removed Discrepancies");
 		//Creates the "next" timeslot and removes any possibility for any lectures be put in the timeslot that shouldnt be there
 		
 		while (true){ //Find largest in firstPrio + >15 in prio
@@ -89,7 +97,9 @@ public class Organizer{
 					max = i;
 				} //Max is set through firstPrio, and if they are equal, the one with the highest general popularity is set as the new max
 			}
+			
 			if (prio[max] >= 15){ //If the general popularity of the chosen event is > 15, then that event is set.
+				//System.out.println("Max Set: " + max);
 				semTable.get(semTable.size()-1).add(max);
 				break;
 			}
@@ -120,7 +130,9 @@ public class Organizer{
 						priomax = i;
 					}
 				}
+				//System.out.println("Priomax Set: " + priomax);
 				semTable.get(semTable.size()-1).add(priomax);
+				break;
 				
 				
 			}
@@ -156,21 +168,59 @@ public class Organizer{
 				}
 			}
 		}*/
+		
+		/*System.out.println(peopleList.size());
+		System.out.println(eventNum);
+		for(int i = 0; i < peopleList.size(); i++){
+			
+			System.out.println(i + " " + peopleList.get(i));
+			System.out.println(peopleList.get(i).getPrefs());
+			System.out.println(peopleList.get(i).getPrefs().get(0));
+			System.out.println(peopleList.get(i).getPrefs().get(0) == eventNum);
+			
+		}
+		
+		peopleList.get(0).addEvent(eventNum);
+		peopleList.get(0).removeEvent(15);
+		
+		System.out.println(peopleList.get(0));
+		System.out.println(peopleList.get(0).getEvents());
+		
+		
+		peopleList.add(peopleList.get(0));
+		peopleList.remove(0);
+		
+		System.out.println(peopleList);*/
+		
+		
+		
 		for(int i = 0; i < peopleList.size(); i++){
 			
 			//Goes through the People in PeopleList to see whose first choice is the same as eventNum, then moves them to the back of the list
-			if(peopleList.get(i).getPrefs().get(0) == eventNum){
+			if(peopleList.get(i).getPrefs().size() > 0 && peopleList.get(i).getPrefs().get(0) == eventNum){
+				
 				peopleList.get(i).addEvent(eventNum);
+				
 				peopleList.get(i).removeEvent(eventNum);
-				peopleList.add(peopleList.get(i));
-				peopleList.remove(i);
+				//System.out.println(peopleList.get(i) + ": " + peopleList.get(i).getEvents() + ": " + i); //Test
+				
+				//peopleList.add(peopleList.get(i));
+				//peopleList.remove(i);
+				
 				counter++;
 				if(counter == 15){
-					break;
+					//System.out.println("Done1");
+					return;
 				}
 			}
-			
 		}
+			
+		
+		if(counter == 15){
+			//System.out.println("Done2");
+			return;
+		}
+		
 		for(int i = 0; i < peopleList.size(); i++){
 			
 			for(int j = 0; j < peopleList.get(i).getPrefs().size(); j++){
@@ -179,12 +229,16 @@ public class Organizer{
 				if(peopleList.get(i).getPrefs().get(j) == eventNum){
 					
 					peopleList.get(i).addEvent(eventNum);
+					
 					peopleList.get(i).removeEvent(eventNum);
-					peopleList.add(peopleList.get(i));
-					peopleList.remove(i);
+					//System.out.println(peopleList.get(i) + ": " + peopleList.get(i).getEvents()); //Test
+					//peopleList.add(peopleList.get(i));
+					//peopleList.remove(i);
+					
 					counter++;
 					if(counter == 15){
-						break;
+						//System.out.println("Done3");
+						return;
 					}
 					
 				}
@@ -192,9 +246,44 @@ public class Organizer{
 			}
 			
 		}
+		//System.out.println("Done4");
 		
-		
+	}
 			
+			
+	
+	
+	public void printSeminars(){
+		
+		System.out.println("People Schedules: ");
+		for(int i = 0; i < peopleList.size(); i++){
+			System.out.println(peopleList.get(i).getName() + ": " + peopleList.get(i).getEvents());
+		}
+		System.out.println();
+		System.out.println("Seminar Schedule: ");
+		System.out.println(semTable);
+		
+		
+		
+		
+	}
+	public void displayTest(){
+		System.out.println(peopleList);
+		System.out.println("\n\n\n");
+		for(int i = 0; i < 19; i++){
+			System.out.print(prio[i] + " ");
+		}
+		System.out.println();
+		for(int i = 0; i < 19; i++){
+			System.out.print(firstPrio[i] + " ");
+		}
+		System.out.println();
+		
+		System.out.println(semTable);
 	}
 		
 }
+
+
+
+
