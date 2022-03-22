@@ -50,11 +50,22 @@ public class Main{
 		
 		//Sorting Sr Seminar
 		Organizer org = new Organizer(data); //uploads data into the Organizer
+		//org.setPrio();
+		//org.setTimeSlot();
+		//org.fillPeople();
 		for(int i = 0; i < 30; i++){ //Organizing
 			org.setPrio();
 			org.setTimeSlot();
 			org.fillPeople();
+			//System.out.println(i);
 		}
+		//System.out.println("\n\n\n\n\n");
+		//org.setPrio();
+		//System.out.println("Finished1");
+		//org.setTimeSlot();
+		//System.out.println("Finished2");
+		//org.displayTest();
+		org.printSeminars();
 		
 		
 		
