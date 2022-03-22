@@ -24,6 +24,9 @@ public class Person{
 	}
 	
 	//Returning Vars
+	public String getName(){
+		return name;
+	}
 	public ArrayList<Integer> getPrefs(){
 		return prefs;
 	}
@@ -38,7 +41,12 @@ public class Person{
 		prefs.add(event);
 	}
 	public void removeEvent(int event){
-		prefs.remove(event);
+		//prefs.remove(event);
+		for(int i = 0; i < prefs.size(); i++){
+			if (prefs.get(i) == event){
+				prefs.remove(i);
+			}
+		}
 	}
 	
 	public String toString(){
